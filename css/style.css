@@ -1,0 +1,343 @@
+*
+{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+}
+
+body
+{
+	background-color: black;
+	color: white;
+	text-align: justify;
+}
+
+a
+{
+	color: #8c0d0d;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #ff4e00;
+}
+
+a:focus, a:active
+{
+	outline: none;
+}
+
+input:focus, textarea:focus
+{
+	background-color: #d2dae1;
+}
+
+h1, h2, h3, h4
+{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+p, ol
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+ul
+{
+	list-style: none;
+}
+
+strong, legend
+{
+	color: #d39825;
+}
+
+fieldset
+ {
+	width: 600px;
+	border: 2px solid white;
+	-moz-border-radius: 5px;
+}
+
+dl
+{
+	text-align: justify;
+	margin-bottom: 30px;
+}
+
+dl dd
+{
+	margin-left: 30px;
+}
+
+.floatLeft
+{
+	float: left;
+}
+
+.floatRight
+{
+	float: right;
+}
+
+.erreur
+{
+	color: red;
+}
+
+.petit
+{
+	font-size: 70%;
+}
+
+.center
+{
+	text-align: center;
+}
+
+	#page
+	{
+		margin: auto;
+		width: 1000px;
+	}
+	
+		#admin
+		{
+			position: absolute;
+		}
+		
+		#header
+		{
+			clear: both;
+			width: 1000px;
+			height: 200px;
+			background-image: url('header.jpg');
+		}
+		
+		#menu
+		{
+			margin-top: 20px;
+			float: left;
+			width: 152px;
+		}
+		
+			#menu object
+			{
+				margin-top: 20px;
+			}
+			
+			#menu p
+			{
+				text-align: center;
+				font-size: 70%;
+			}
+			
+			#menu ul
+			{
+				text-align: center;
+			}
+			
+			#menu > ul
+			{
+				border: 1px solid #8c0d0d;
+			}
+			
+				#menu ul li a
+				{
+					display: block;
+					width: 150px;
+					height: 30px;
+					font-size: 120%
+				}
+				
+				#menu ul li:hover a
+				{
+					background-position: 0px -30px;
+				}
+				
+				#menu ul li ul, #menu ul li ul li, #menu ul li ul li a
+				{
+					height: auto;
+				}
+				
+					#menu ul li ul li
+					{
+						padding: 3px 0px;
+					}
+				
+				#menu ul li #accueil
+				{
+					background-image: url('accueil.jpg');
+				}
+				
+				#menu ul li #presentation
+				{
+					background-image: url('presentation.jpg');
+				}
+				
+				#menu ul li #programme
+				{
+					background-image: url('programme.jpg');
+				}
+				
+				#menu ul li #galerie
+				{
+					background-image: url('galerie.jpg');
+				}
+				
+				#menu ul li #calendrier
+				{
+					background-image: url('calendrier.jpg');
+				}
+				
+				#menu ul li #livredor
+				{
+					background-image: url('livredor.jpg');
+				}
+				
+						#menu ul li #sousMenuGalerie li a
+						{
+							font-size: 80%;
+						}
+		
+		#corps
+		{
+			margin-left: 152px;
+			padding: 20px;
+			width: 808px;
+			margin-bottom: 20px;
+		}
+		
+			#corps #tableCalendrier
+			{
+				float: left;
+				width: 438px;
+			}
+			
+				#corps #tableCalendrier table
+				{
+					border: 1px solid white;
+				}
+				
+					#corps #tableCalendrier table caption
+					{
+						border: 1px solid white;
+						padding-top: 10px;
+						height: 50px;
+						font-size: 200%;
+					}
+					
+						#corps #tableCalendrier table tr td
+						{
+							width: 60px;
+							height: 60px;
+							text-align:center;
+							font-size: 80%;
+							color: #d39825;
+							background-color: #480000;
+						}
+						
+						#corps #tableCalendrier table tr .ferie
+						{
+							background-color: #541b06;
+						}
+						
+						#corps #tableCalendrier table tr .none
+						{
+							background-color: black;
+						}
+						
+							#corps #tableCalendrier table tr td a
+							{
+								display: block;
+								width: 60px;
+								height: 60px;
+								color: #d39825;
+								background-color: #8c0d0d;
+							}
+							
+							#corps #tableCalendrier table tr td a:hover
+							{
+								color: #480000;
+								background-color: #ff4e00;
+							}
+			
+			#corps #descriptionEvenement
+			{
+				border: 1px white solid;
+				padding: 10px;
+				margin-left: 448px;
+				text-align: center;
+			}
+			
+				#corps #descriptionEvenement p
+				{
+					margin-top: 0px;
+				}
+				
+			#corps #maxi
+			{
+				float: right;
+				height: 600px;
+				width: 600px;
+				text-align: center;
+			}
+			
+			#corps #mini
+			{
+				text-align: center;
+			}
+				
+				#corps #maxi img
+				{
+					border: 2px solid #8c0d0d;
+				}
+					
+					#corps #mini ul
+					{
+						margin-right: 1px;
+					}
+					
+						#corps #mini ul li
+						{
+							height: 100px;
+							width: 100px;
+							border: 1px solid #8c0d0d;
+							margin-bottom: 1px;
+						}
+			#corps #formulaire fieldset			
+			{
+				margin: auto;
+				padding: 10px;
+			}
+			
+			#corps #messagesLivreDOr
+			{
+				margin: auto;
+				width: 600px;
+				border: 2px white solid;
+				margin-top: 30px;
+				padding: 10px;
+			}
+
+			
+		#corpsAdmin
+		{
+			width: 1000px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		
+			#corpsAdmin form fieldset
+			{
+				text-align: justify;
+				padding: 20px 0px 20px 20px;
+			}
+			
+				#corpsAdmin form fieldset select
+				{
+					width: 100px;
+				}
