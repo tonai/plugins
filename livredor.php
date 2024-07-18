@@ -10,10 +10,10 @@
 		{
 			$nom=htmlentities($_POST['nom'], ENT_QUOTES);
 			$message=htmlentities($_POST['message'], ENT_QUOTES);
-			mysql_connect($db['hostName'], $db['userName'], $db['password']);
-			mysql_select_db($db['dataBase']);
-			mysql_query("INSERT INTO livredor VALUES('', '$nom', '$message')");
-			mysql_close();
+			$mysqli = mysqli_connect($db['hostName'], $db['userName'], $db['password']);
+			mysqli_select_db($mysqli, $db['dataBase']);
+			mysqli_query($mysqli, "INSERT INTO livredor VALUES('', '$nom', '$message')");
+			mysqli_close($mysqli);
 		}
 		elseif ($_POST['nom']==null)
 		{
@@ -21,7 +21,7 @@
 		}
 		elseif ($_POST['message']==null)
 		{
-			echo '<p class="erreur">Il faut écrire un message...</p>';
+			echo '<p class="erreur">Il faut ï¿½crire un message...</p>';
 		}
 	}
 ?>
@@ -36,10 +36,10 @@
 				</form>
 				<div id="messagesLivreDOr">
 <?php
-	mysql_connect($db['hostName'], $db['userName'], $db['password']);
-	mysql_select_db($db['dataBase']);
-	$reponse=mysql_query("SELECT COUNT(*) AS nb_messages FROM livredor");
-	$donnees=mysql_fetch_row($reponse);
+	$mysqli = mysqli_connect($db['hostName'], $db['userName'], $db['password']);
+	mysqli_select_db($mysqli, $db['dataBase']);
+	$reponse=mysqli_query($mysqli, "SELECT COUNT(*) AS nb_messages FROM livredor");
+	$donnees=mysqli_fetch_row($reponse);
 	$messageParPage=10;
 	if (!isset($_GET['page']))
 	{
@@ -57,9 +57,9 @@
 	if ($pageActuelle!=1)
 	{
 		$pagePrec=$pageActuelle-1;
-		echo "\n\t<a href=\"?page=".$pagePrec."\" title=\"page précédante\"><</a>&nbsp&nbsp;";
+		echo "\n\t<a href=\"?page=".$pagePrec."\" title=\"page prï¿½cï¿½dante\"><</a>&nbsp&nbsp;";
 	}
-	echo "\n\t<a href=\"?page=1\" title=\"première page\">1..</a>&nbsp&nbsp;";
+	echo "\n\t<a href=\"?page=1\" title=\"premiï¿½re page\">1..</a>&nbsp&nbsp;";
 	$i=2;
 	if ($pageActuelle<=5)
 	{
@@ -82,15 +82,15 @@
 		echo "\n\t<a href=\"?page=".$i."\">".$i."</a>&nbsp&nbsp;";
 	}
 	if ($pagesTotales!=1)
-		echo "\n\t<a href=\"?page=".$pagesTotales."\" title=\"dernière page\">..".$pagesTotales."</a>&nbsp&nbsp;";
+		echo "\n\t<a href=\"?page=".$pagesTotales."\" title=\"derniï¿½re page\">..".$pagesTotales."</a>&nbsp&nbsp;";
 	if ($pageActuelle!=$pagesTotales)
 	{
 		$pageSuiv=$pageActuelle+1;
 		echo "\n\t<a href=\"?page=".$pageSuiv."\" title=\"page suivante\">></a>";
 		}
 	echo "\n<p/>";
-	$reponse=mysql_query('SELECT pseudo, message FROM livredor ORDER BY id DESC LIMIT '.$message.','.$messageParPage.' ');
-	while($donnees=mysql_fetch_array($reponse))
+	$reponse=mysqli_query($mysqli, 'SELECT pseudo, message FROM livredor ORDER BY id DESC LIMIT '.$message.','.$messageParPage.' ');
+	while($donnees=mysqli_fetch_array($reponse))
 	{
 		echo "\n<dl>";
 		echo "\n<dt><strong>".nl2br($donnees['pseudo'])." :</strong></dt>";
@@ -98,7 +98,7 @@
 		echo "\n</dl>";
 	}
 	echo "\n<p>page ".$pageActuelle."</p>\n";
-	mysql_close();
+	mysqli_close($mysqli);
 ?>
 				</div>
 			</div>

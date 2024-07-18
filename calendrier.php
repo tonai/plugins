@@ -2,7 +2,7 @@
 	include('menu.php');
 ?>
 			<div id="corps">
-				<h1>Calendrier des prochains évènements</h1>
+				<h1>Calendrier des prochains ï¿½vï¿½nements</h1>
 				<div id="tableCalendrier">
 					<table>
 <?php
@@ -20,7 +20,7 @@
 			return $reste;
 	}
 	
-	$tableauMois=array("janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre");
+	$tableauMois=array("janvier","fï¿½vrier","mars","avril","mai","juin","juillet","aoï¿½t","septembre","octobre","novembre","dï¿½cembre");
 	$tableauJour=array("lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche");
 	
 	/* initialisation des variables annees, mois correpondant */
@@ -41,7 +41,7 @@
 		$premierJour=7;
 	$bissextile=date("L");
 	
-	/* Calcul du Lundi de Pâques, Jeudi de l'Ascension et Lundi de Pentecôte */
+	/* Calcul du Lundi de Pï¿½ques, Jeudi de l'Ascension et Lundi de Pentecï¿½te */
 	$n=(int)$annee-1900;
 	$a=divisionEuclidienne($n, 19, 1);
 	$x=$a*7+1;
@@ -85,23 +85,23 @@
 		$moisPentecote=6;
 	}
 	
-	/* on récupère les évènements du mois dans la base  */
-	mysql_connect($db['hostName'], $db['userName'], $db['password']);
-	mysql_select_db($db['dataBase']);
+	/* on rï¿½cupï¿½re les ï¿½vï¿½nements du mois dans la base  */
+	$mysqli = mysqli_connect($db['hostName'], $db['userName'], $db['password']);
+	mysqli_select_db($mysqli, $db['dataBase']);
 	$date1=$annee."-".$moisActuel."-01";
 			$date2=$annee."-".$moisActuel."-31";
-			$reponse=mysql_query("SELECT * FROM evenement WHERE date >= '$date1' AND date <='$date2'");
+			$reponse=mysqli_query($mysqli, "SELECT * FROM evenement WHERE date >= '$date1' AND date <='$date2'");
 			$nbEvenement=0;
 			$jourEvenement=array("");
 			$evenement=array("");
-			while ($donnees=mysql_fetch_array($reponse))
+			while ($donnees=mysqli_fetch_array($reponse))
 			{
 				$dateEvenement=explode("-",$donnees['date']);
 				$jourEvenement[$nbEvenement]=$dateEvenement[2];
 				$evenement[$nbEvenement]=$donnees['nom'];
 				$nbEvenement++;
 			}
-	mysql_close();
+	mysqli_close($mysqli);
 	
 	/* on affiche le tableau */
 	if ($moisActuel==4 || $moisActuel==6 || $moisActuel==9 || $moisActuel==11)
@@ -184,32 +184,32 @@
 						echo "\n\t\t<td class=\"ferie\">";
 						echo "nouvel an";
 					}
-					elseif ($moisActuel==5 && $jour==1)								//1er mai -> fête du travail
+					elseif ($moisActuel==5 && $jour==1)								//1er mai -> fï¿½te du travail
 					{
 						echo "\n\t\t<td class=\"ferie\">";
-						echo "fête du travail";
+						echo "fï¿½te du travail";
 					}
 					elseif ($moisActuel==5 && $jour==8)								//8 mai -> armistice WWII
 					{
 						echo "\n\t\t<td class=\"ferie\">";
 						echo "armistice WWII";
 					}
-					elseif ($moisActuel==7 && $jour==14)							//14 juillet -> fête nationale
+					elseif ($moisActuel==7 && $jour==14)							//14 juillet -> fï¿½te nationale
 					{
 						echo "\n\t\t<td class=\"ferie\">";
-						echo "fête nationale";
+						echo "fï¿½te nationale";
 					}
 					elseif ($moisActuel==11 && $jour==11)							//11 novembre -> armistice WWI
 					{
 						echo "\n\t\t<td class=\"ferie\">";
 						echo "armistice WWI";
 					}
-					elseif ($moisActuel==12 && $jour==25)							//25 décembre -> noël
+					elseif ($moisActuel==12 && $jour==25)							//25 dï¿½cembre -> noï¿½l
 					{
 						echo "\n\t\t<td class=\"ferie\">";
-						echo "noël";
+						echo "noï¿½l";
 					}
-					elseif ($moisActuel==8 && $jour==15)							//15 août -> assomption
+					elseif ($moisActuel==8 && $jour==15)							//15 aoï¿½t -> assomption
 					{
 						echo "\n\t\t<td class=\"ferie\">";
 						echo "assomption";
@@ -219,20 +219,20 @@
 						echo "\n\t\t<td class=\"ferie\">";
 						echo "toussaint";
 					}
-					elseif ($moisActuel==$moisPaques && $jour==$jourPaques)			//Lundi de Pâques
+					elseif ($moisActuel==$moisPaques && $jour==$jourPaques)			//Lundi de Pï¿½ques
 					{
 						echo "\n\t\t<td class=\"ferie\">";
-						echo "lundi de Pâques";
+						echo "lundi de Pï¿½ques";
 					}
 					elseif ($moisActuel==$moisAscension && $jour==$jourAscension)	//Jeudi de l'Ascension
 					{
 						echo "\n\t\t<td class=\"ferie\">";
 						echo "jeudi de l'Ascension";
 					}
-					elseif ($moisActuel==$moisPentecote && $jour==$jourPentecote)	//Lundi de Pentecôte
+					elseif ($moisActuel==$moisPentecote && $jour==$jourPentecote)	//Lundi de Pentecï¿½te
 					{
 						echo "\n\t\t<td class=\"ferie\">";
-						echo "lundi de Pentecôte";
+						echo "lundi de Pentecï¿½te";
 					}
 					else
 					{
@@ -252,7 +252,7 @@
 					</table>
 				</div>
 				<div id="descriptionEvenement">
-					<h4>Cliquez sur un évènement pour avoir les détails</h4>
+					<h4>Cliquez sur un ï¿½vï¿½nement pour avoir les dï¿½tails</h4>
 				</div>
 			</div>
 		</div>

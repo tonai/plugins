@@ -5,7 +5,7 @@
 				<script type="text/javascript">
 <!--
 
-/* Merci à "RAD ZONE" pour son script : http://radservebeer.free.fr */
+/* Merci ï¿½ "RAD ZONE" pour son script : http://radservebeer.free.fr */
 
 var P,T;
 var over = -1;
@@ -39,7 +39,7 @@ zoom(0);
 }
 //-->
 				</script>
-				<h1>Les morceaux joués</h1>
+				<h1>Les morceaux jouÃ©s</h1>
 					<p class="center">
 <?php
 	$dossier=opendir("musique");

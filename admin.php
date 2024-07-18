@@ -33,13 +33,13 @@
 				$minute=$_POST['minute'];
 				if($_POST['nom']!="")
 				{
-					mysql_connect($db['hostName'], $db['userName'], $db['password']);
-					mysql_select_db($db['dataBase']);
+					$mysqli = mysqli_connect($db['hostName'], $db['userName'], $db['password']);
+					mysqli_select_db($mysqli, $db['dataBase']);
 					$nom=htmlentities($_POST['nom'], ENT_QUOTES);
 					$date=$annee.'-'.$mois.'-'.$jour;
-					$reponse=mysql_query("SELECT date FROM evenement");
+					$reponse=mysqli_query($mysqli, "SELECT date FROM evenement");
 					$i=0;
-					while ($donnees=mysql_fetch_array($reponse))
+					while ($donnees=mysqli_fetch_array($reponse))
 					{
 						$dateBase=explode('-',$donnees['date']);
 						$anneeBase=$dateBase[0];
@@ -62,10 +62,10 @@
 					$lien=htmlentities($_POST['lien'], ENT_QUOTES);
 					if ($i==0)
 					{
-						mysql_query("INSERT INTO evenement VALUES('', '$nom', '$date', '$description', '$passage', '$lieu', '$adresse', '$lien')");
-						echo "Message enregistré";
+						mysqli_query($mysqli, "INSERT INTO evenement VALUES('', '$nom', '$date', '$description', '$passage', '$lieu', '$adresse', '$lien')");
+						echo "Message enregistrï¿½";
 					}
-					mysql_close();
+					mysqli_close($mysqli);
 				}
 			}
 ?>
@@ -77,7 +77,7 @@
 			<div id="corpsAdmin">
 				<form method="post" action="admin.php">
 					<fieldset>
-						<legend>Ajouter un évènement</legend>
+						<legend>Ajouter un ï¿½vï¿½nement</legend>
 						<p>
 							<input type="hidden" name="pseudo" value="tonai"/>
 							<input type="hidden" name="MDP" value="chouchou"/>
@@ -88,7 +88,7 @@
 if(isset($_POST['nom']))
 {
 	if ($_POST['nom']=="")
-		echo '<span class="erreur">Ce champ doit être renseigné</span>';
+		echo '<span class="erreur">Ce champ doit ï¿½tre renseignï¿½</span>';
 }
 ?>
 							</strong></label><br/>
@@ -99,7 +99,7 @@ if(isset($_POST['nom']))
 							<textarea name="description" rows="3" cols="69"><?php	if(isset($_POST['description']))	echo $_POST['description'];	?></textarea>
 						</p>
 						<p>
-							<strong>date (*) : </strong><?php if (isset($i)) {if ($i==1) echo '<span class="erreur">Un évènement éxiste déjà à cette date</span>';} ?><br/>
+							<strong>date (*) : </strong><?php if (isset($i)) {if ($i==1) echo '<span class="erreur">Un ï¿½vï¿½nement ï¿½xiste dï¿½jï¿½ ï¿½ cette date</span>';} ?><br/>
 <?php
 	echo "<label for=\"jour\">jour : </label>";
 	echo "\n<select name=\"jour\">";
@@ -112,7 +112,7 @@ if(isset($_POST['nom']))
 	}
 	echo "\n</select>";
 	
-	$tableauMois=array("janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre");
+	$tableauMois=array("janvier","fï¿½vrier","mars","avril","mai","juin","juillet","aoï¿½t","septembre","octobre","novembre","dï¿½cembre");
 	echo "\n<label for=\"mois\"> mois : </label>";
 	echo "\n<select name=\"mois\">";
 	for ($i=1;$i<=12;$i++)
@@ -180,10 +180,10 @@ if(isset($_POST['nom']))
 							<input type="reset"/>
 						</p>
 						<p class="petit">
-							Les champs suivis de (*) doivent obligatoirement être renseignés.<br/>
-							/!\ En cas d'oubli, la date est automatiquement fixé par défault au 1er janvier de l'année en cours.<br/>
-							Le champ suivi de (**) peut ne pas être renseigné en cochant la case "Ne pas renseigner l'horaire de passage".<br/>
-							/!\ En cas d'oubli, l'heure de passage est automatiquement fixé par défault à 00H00.
+							Les champs suivis de (*) doivent obligatoirement ï¿½tre renseignï¿½s.<br/>
+							/!\ En cas d'oubli, la date est automatiquement fixï¿½ par dï¿½fault au 1er janvier de l'annï¿½e en cours.<br/>
+							Le champ suivi de (**) peut ne pas ï¿½tre renseignï¿½ en cochant la case "Ne pas renseigner l'horaire de passage".<br/>
+							/!\ En cas d'oubli, l'heure de passage est automatiquement fixï¿½ par dï¿½fault ï¿½ 00H00.
 						</p>
 					</fieldset>
 				</form>
@@ -214,7 +214,7 @@ if(isset($_POST['nom']))
 						<input  type="submit">
 					</p>
 				</form>
-				<p><a href="index.php">Retour à l'accueil</a></p>
+				<p><a href="index.php">Retour ï¿½ l'accueil</a></p>
 			</div>
 <?php
 		}
@@ -240,7 +240,7 @@ if(isset($_POST['nom']))
 						<input  type="submit">
 					</p>
 				</form>
-				<p><a href="index.php">Retour à l'accueil</a></p>
+				<p><a href="index.php">Retour ï¿½ l'accueil</a></p>
 			</div>
 <?php
 	}

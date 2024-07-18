@@ -1,7 +1,7 @@
 <?php
 $db = array (
     "hostName" => "localhost",
-    "userName" => "root",
-    "password" => "",
+    "userName" => "plugins",
+    "password" => "snigulp",
     "dataBase" => "plugins");
 ?>

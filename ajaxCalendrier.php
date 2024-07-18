@@ -3,17 +3,17 @@
 	if(isset($_POST['date']))
 	{
 		$date=$_POST['date'];
-		mysql_connect($db['hostName'], $db['userName'], $db['password']);
-		mysql_select_db($db['dataBase']);
-		$reponse=mysql_query("SELECT * FROM evenement WHERE date='$date'");
-		$donnees=mysql_fetch_array($reponse);
+		$mysqli = mysqli_connect($db['hostName'], $db['userName'], $db['password']);
+		mysqli_select_db($mysqli, $db['dataBase']);
+		$reponse=mysqli_query($mysqli, "SELECT * FROM evenement WHERE date='$date'");
+		$donnees=mysqli_fetch_array($reponse);
 		$evenement=$donnees['nom'];
 		$descriptionEvenement=nl2br($donnees['description']);
 		$passageEvenement=$donnees['passage'];
 		$lieuEvenement=$donnees['lieu'];
 		$adresseEvenement=nl2br($donnees['adresse']);
 		$lienEvenement=$donnees['lien'];
-		mysql_close();
+		mysqli_close($mysqli);
 		$date=explode("-", $date);
 		$annee=$date[0];
 		$mois=$date[1];
